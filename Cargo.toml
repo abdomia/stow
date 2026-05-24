@@ -1,0 +1,12 @@
+[package]
+name = "stow"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.102"
+color-eyre = "0.6.5"
+crossterm = "0.29.0"
+ratatui = "0.30.0"
+tachyonfx = "0.25.0"
+tui-textarea-2 = "0.11.0"
