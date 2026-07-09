@@ -29,15 +29,15 @@ impl TextArea {
     pub fn input(&mut self, key: KeyEvent) {
         match key.code {
             KeyCode::Char(c) if !key.modifiers.contains(KeyModifiers::CONTROL) => {
-                self.text.insert(self.cursor_byte_index(), c);
+                self.text.insert(self.cursor_index(), c);
                 self.cursor += 1;
             }
             KeyCode::Backspace if self.cursor > 0 => {
                 self.cursor -= 1;
-                self.text.remove(self.cursor_byte_index());
+                self.text.remove(self.cursor_index());
             }
             KeyCode::Delete if self.cursor < self.len() => {
-                self.text.remove(self.cursor_byte_index());
+                self.text.remove(self.cursor_index());
             }
             KeyCode::Left if self.cursor > 0 => self.cursor -= 1,
             KeyCode::Right if self.cursor < self.len() => self.cursor += 1,
@@ -55,7 +55,7 @@ impl TextArea {
         self.text.chars().count()
     }
 
-    fn cursor_byte_index(&self) -> usize {
+    fn cursor_index(&self) -> usize {
         self.text
             .char_indices()
             .nth(self.cursor)
