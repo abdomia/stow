@@ -1,29 +1,23 @@
 use color_eyre::Result;
-use crossterm::event::{DisableMouseCapture, EnableMouseCapture, KeyEvent};
+use crossterm::event::{DisableMouseCapture, EnableMouseCapture};
 use crossterm::terminal::{EnterAlternateScreen, LeaveAlternateScreen};
 use crossterm::{execute, terminal};
-use ratatui::backend::CrosstermBackend;
-
+use ratatui::{Terminal, backend::CrosstermBackend};
 use std::io::{self, Stdout};
 use std::panic;
-use tui_textarea::TextArea;
 
-type Term = ratatui::Terminal<CrosstermBackend<Stdout>>;
+type Term = Terminal<CrosstermBackend<Stdout>>;
+
 pub struct StowApp {
-    //TODO: make this input field to be usable.
-    pub input: TextArea<'static>,
     pub term: Term,
 }
 
 impl StowApp {
     pub fn new(term: Term) -> Self {
-        Self {
-            term,
-            input: TextArea::default(),
-        }
+        Self { term }
     }
 
-    pub fn start(&mut self) -> std::io::Result<()> {
+    pub fn start(&mut self) -> io::Result<()> {
         terminal::enable_raw_mode()?;
         execute!(io::stdout(), EnterAlternateScreen, EnableMouseCapture)?;
 

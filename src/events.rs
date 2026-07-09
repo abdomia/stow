@@ -1,6 +1,7 @@
-use crossterm::event::{KeyEvent, MouseEvent};
+use crossterm::event::KeyEvent;
 
-pub enum EventState {
-    Key(KeyEvent),
-    Mouse(MouseEvent),
+use crate::tui::TextArea;
+
+pub fn update_input(text_input: &mut TextArea, keys: KeyEvent) {
+    text_input.input(keys);
 }

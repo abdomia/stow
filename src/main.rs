@@ -2,14 +2,12 @@ mod events;
 mod stow;
 mod tui;
 
-use std::time::Duration;
-
+use crate::events::update_input;
+use crate::stow::StowApp;
+use crate::tui::init_chat_ui;
 use color_eyre::Result;
 use crossterm::event::{Event, KeyCode, KeyEventKind};
 use ratatui::{Terminal, backend::CrosstermBackend};
-use stow::StowApp;
-
-use crate::tui::{init_chat_ui, update_input};
 
 fn main() -> Result<()> {
     let backend = CrosstermBackend::new(std::io::stdout());
@@ -23,17 +21,16 @@ fn main() -> Result<()> {
             frame.render_widget(&chat_input, area);
         })?;
 
-        if crossterm::event::poll(Duration::from_millis(150))? {
-            if let Event::Key(key) = crossterm::event::read()? {
-                if key.kind == KeyEventKind::Press {
-                    match key.code {
-                        KeyCode::Esc => break,
-                        _ => update_input(&mut chat_input, key),
-                    }
+        if let Event::Key(key) = crossterm::event::read()? {
+            if key.kind == KeyEventKind::Press {
+                match key.code {
+                    KeyCode::Esc => break,
+                    _ => update_input(&mut chat_input, key),
                 }
             }
         }
     }
+
     stow_app.exit()?;
     Ok(())
 }
