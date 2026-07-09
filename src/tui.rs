@@ -22,7 +22,7 @@ impl TextArea {
             cursor: 0,
             text_style: Style::default().fg(Color::White),
             placeholder_style: Style::default().fg(Color::DarkGray),
-            cursor_style: Style::default().fg(Color::DarkGray).bg(Color::White),
+            cursor_style: Style::default().fg(Color::Black).bg(Color::White),
         }
     }
 
