@@ -1,7 +1,9 @@
 use color_eyre::Result;
-use crossterm::event::{DisableMouseCapture, EnableMouseCapture};
-use crossterm::terminal::{EnterAlternateScreen, LeaveAlternateScreen};
-use crossterm::{execute, terminal};
+use crossterm::{
+    event::DisableMouseCapture,
+    execute,
+    terminal::{self, LeaveAlternateScreen},
+};
 use ratatui::{Terminal, backend::CrosstermBackend};
 use std::io::{self, Stdout};
 use std::panic;
@@ -19,7 +21,7 @@ impl StowApp {
 
     pub fn start(&mut self) -> io::Result<()> {
         terminal::enable_raw_mode()?;
-        execute!(io::stdout(), EnterAlternateScreen, EnableMouseCapture)?;
+        // execute!(io::stdout(), EnterAlternateScreen, EnableMouseCapture)?;
 
         // Define a custom panic hook to reset the terminal properties.
         // This way, you won't have your terminal messed up if an unexpected error happens.
