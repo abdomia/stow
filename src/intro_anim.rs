@@ -14,13 +14,6 @@ pub struct LogoAnim {
 }
 
 impl LogoAnim {
-    pub fn dim(&self) -> (u16, u16, u16) {
-        let w = self.width;
-        let h = self.height;
-        let term_h = h / 2 + h % 2;
-        (w, h, term_h)
-    }
-
     pub fn new() -> Result<Self, String> {
         let mut decoder = gif::DecodeOptions::new();
         decoder.set_color_output(gif::ColorOutput::RGBA);
@@ -86,6 +79,13 @@ impl LogoAnim {
             height: h as u16,
             total_duration: Duration::from_millis(total_ms),
         })
+    }
+
+    pub fn dim(&self) -> (u16, u16, u16) {
+        let w = self.width;
+        let h = self.height;
+        let term_h = h / 2 + h % 2;
+        (w, h, term_h)
     }
 
     pub fn frame_at(&self, elapsed: Duration) -> Option<&[u8]> {
