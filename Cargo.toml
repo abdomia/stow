@@ -5,8 +5,9 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.102"
+axum = "0.8.9"
 color-eyre = "0.6.5"
 crossterm = "0.29.0"
+gif = "0.14"
 ratatui = "0.30.0"
-tachyonfx = "0.25.0"
 textwrap = "0.16"
