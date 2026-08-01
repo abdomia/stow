@@ -4,8 +4,6 @@ mod intro_anim;
 mod phases;
 mod tui;
 
-use std::time::{Duration, Instant};
-
 use crate::app::{App, AppFlow};
 use crate::input::keymap::{Action, handle_key};
 use crate::intro_anim::{LogoAnim, frame_to_text};
@@ -23,14 +21,14 @@ fn main() -> Result<()> {
     let terminal = Terminal::new(backend)?;
     let mut stow_app = App::new(terminal);
     let mut app_flow = AppFlow::init_flow();
-    let mut phase = AppPhase::Splash(Instant::now());
+    let mut phase = AppPhase::Splash(std::time::Instant::now());
 
     let anim = LogoAnim::new().expect("failed to decode stow.gif");
     let (w, h, term_h) = anim.dim();
 
     stow_app.start()?;
     loop {
-        let timeout = Duration::from_millis(16);
+        let timeout = std::time::Duration::from_millis(16);
         if crossterm::event::poll(timeout)? {
             match crossterm::event::read()? {
                 Event::Key(key) if key.kind == KeyEventKind::Press => {
