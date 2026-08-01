@@ -1,10 +1,10 @@
 use crate::tui::TextArea;
-use color_eyre::Result;
 use crossterm::{
     execute,
     terminal::{self, EnterAlternateScreen, LeaveAlternateScreen},
 };
 use ratatui::{Terminal, backend::CrosstermBackend};
+
 use std::io::{self, Stdout};
 use std::panic;
 
@@ -96,13 +96,13 @@ impl App {
         Ok(())
     }
 
-    fn reset() -> Result<()> {
+    fn reset() -> io::Result<()> {
         terminal::disable_raw_mode()?;
         execute!(io::stdout(), LeaveAlternateScreen)?;
         Ok(())
     }
 
-    pub fn exit(&mut self) -> Result<()> {
+    pub fn exit(&mut self) -> io::Result<()> {
         Self::reset()?;
         self.term.show_cursor()?;
         Ok(())

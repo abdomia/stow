@@ -17,6 +17,7 @@ pub struct TextArea {
 }
 
 impl Default for TextArea {
+    /// make the default of [`TextArea`] as it's new function
     fn default() -> Self {
         Self::new()
     }

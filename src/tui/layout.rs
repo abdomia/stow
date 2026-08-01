@@ -22,13 +22,13 @@ pub const ASSISTANT: Color = Color::Rgb(120, 200, 160);
 fn build_chat_lines(messages: &[Message]) -> Vec<Line<'static>> {
     let mut lines: Vec<Line> = Vec::new();
     for msg in messages {
-        let (label, color) = match msg.role {
+        let (role_label, color) = match msg.role {
             Role::User => ("You", USER),
-            Role::Assistant => ("stow", ASSISTANT),
+            Role::Assistant => ("Stow", ASSISTANT),
         };
 
         lines.push(Line::from(vec![Span::styled(
-            format!("{label} "),
+            format!("{role_label} "),
             Style::default().fg(color).add_modifier(Modifier::BOLD),
         )]));
 
@@ -84,12 +84,12 @@ pub fn render_chat_area(frame: &mut Frame, area: Rect, messages: &[Message], scr
 
 pub fn render_input(frame: &mut Frame, area: Rect, chat_input: &mut TextArea) {
     let prompt = Span::styled(
-        "❯ ",
+        "> ",
         Style::default().fg(ACCENT).add_modifier(Modifier::BOLD),
     );
 
     let block = Block::default()
-        .borders(Borders::TOP)
+        .borders(Borders::ALL)
         .border_style(Style::default().fg(Color::Rgb(40, 46, 58)))
         .padding(Padding::horizontal(2));
 

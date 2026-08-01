@@ -10,9 +10,9 @@ use crate::app::{App, AppFlow};
 use crate::input::keymap::{Action, handle_key};
 use crate::intro_anim::{LogoAnim, frame_to_text};
 use crate::phases::{AppPhase, updated_phase};
-use crate::tui::layout::{ACCENT, ACCENT_SOFT};
+use crate::tui::layout::{ACCENT, ACCENT_SOFT, BG, FG};
 
-use color_eyre::Result;
+use anyhow::Result;
 use crossterm::event::{Event, KeyEventKind};
 use ratatui::Terminal;
 use ratatui::backend::CrosstermBackend;
@@ -52,10 +52,9 @@ fn main() -> Result<()> {
         // handle rendering of widgets across the application.
         stow_app.term.draw(|frame| {
             let area = frame.area();
-            frame.buffer_mut().set_style(
-                area,
-                Style::default().bg(tui::layout::BG).fg(tui::layout::FG),
-            );
+            frame
+                .buffer_mut()
+                .set_style(area, Style::default().bg(BG).fg(FG));
 
             AppPhase::display_phase(&phase, frame, &area, w, h, term_h, &mut app_flow, &anim);
         })?;
