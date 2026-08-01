@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="66.628525mm"
+   height="36.652069mm"
+   viewBox="0 0 66.628525 36.652069"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient16">
+      <stop
+         style="stop-color:#e3e2db;stop-opacity:1;"
+         offset="0"
+         id="stop16" />
+      <stop
+         style="stop-color:#e3e2db;stop-opacity:0.35294118;"
+         offset="0.68491232"
+         id="stop19" />
+      <stop
+         style="stop-color:#e3e2db;stop-opacity:0;"
+         offset="1"
+         id="stop17" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient14">
+      <stop
+         style="stop-color:#e3e2db;stop-opacity:1;"
+         offset="0"
+         id="stop14" />
+      <stop
+         style="stop-color:#e3e2db;stop-opacity:0.56862745;"
+         offset="0.4303087"
+         id="stop18" />
+      <stop
+         style="stop-color:#e3e2db;stop-opacity:0;"
+         offset="1"
+         id="stop15" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient14"
+       id="linearGradient15"
+       x1="-141.31021"
+       y1="-131.93761"
+       x2="-93.17482"
+       y2="-131.93761"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#linearGradient16"
+       id="linearGradient17"
+       x1="74.681679"
+       y1="150.86465"
+       x2="120.31471"
+       y2="150.86465"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-74.681677,-124.14412)">
+    <path
+       style="fill:url(#linearGradient17);stroke-width:0.264583"
+       id="path1"
+       d="m 120.31471,143.67237 a 29.558119,19.863058 0 0 1 -17.14197,15.37305 29.558119,19.863058 0 0 1 -28.491061,-1.56799 l 16.35733,-16.54431 z" />
+    <path
+       style="fill:url(#linearGradient15);stroke-width:0.264583"
+       id="path2"
+       d="m -93.17482,-137.58149 a 31.179001,15.587 0 0 1 -18.08204,12.06354 31.179001,15.587 0 0 1 -30.05335,-1.23046 l 17.25432,-12.9827 z"
+       transform="scale(-1)" />
+  </g>
+</svg>

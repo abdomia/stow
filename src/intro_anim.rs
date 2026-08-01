@@ -17,7 +17,9 @@ impl LogoAnim {
     pub fn new() -> Result<Self, String> {
         let mut decoder = gif::DecodeOptions::new();
         decoder.set_color_output(gif::ColorOutput::RGBA);
-        let mut reader = decoder.read_info(FRAME_DATA).map_err(|e| e.to_string())?;
+        let mut reader = decoder
+            .read_info(FRAME_DATA)
+            .map_err(|e| e.to_string())?;
 
         let w = reader.width() as usize;
         let h = reader.height() as usize;
